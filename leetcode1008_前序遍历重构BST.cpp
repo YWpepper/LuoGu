@@ -12,7 +12,7 @@ struct Treenode{
 void BSTCreateFromPre(Treenode*& root, int *pre, int n) {
     // using pre[0] create root node
     int i = 1;
-    Treenode* curr, *tmp;
+    Treenode* curr;
     stack<Treenode*> lifo;
     root = new Treenode{nullptr, pre[0], nullptr};
     curr = root;
