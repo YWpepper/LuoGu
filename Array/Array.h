@@ -23,13 +23,15 @@ class myArray{
     }
     // 析构函数,销毁对象时调用
     ~myArray(){
-        delete []p ;
+        delete[] p ;
     };
     void display();
+    int getSize() const;
+    int getLength() const;
     void initialArray(int idx, T key);
     bool isSorted();
     void randomInit();
-    myArray<T> mergeArray(const myArray<T> &arr1 , const myArray<T> &arr2);
+    static myArray<T> mergeArray(const myArray<T> &arr1 , const myArray<T> &arr2);
     
 };
 
@@ -46,8 +48,19 @@ void myArray<T>::display(){
 }
 
 template<class T>
+int myArray<T>::getSize() const{
+   return size;
+}
+
+template<class T>
+int myArray<T>::getLength() const{
+   return length ;
+}
+
+
+template<class T>
 bool myArray<T>::isSorted(){
-    for(int i=0; i<length; i++)
+    for(int i=0; i<length-1; i++)
     {
         if ( p[i] > p[i+1] )
             return false;
@@ -60,11 +73,14 @@ void myArray<T>::initialArray(int idx, T key){
     p[idx] = key;
 }
 
+
+// 随机初始化函数
 template<class T>
 void myArray<T>::randomInit(){
     srand(time(nullptr)); // 设置随机种子；
     for(int i=0; i<length; i++)
     {
+        std::uniform_int_distribution<int> dis(1,100);
         p[i] = dis(gen);
 
     }
@@ -74,16 +90,16 @@ void myArray<T>::randomInit(){
 
 template<class T>
 myArray<T> myArray<T>::mergeArray(const myArray<T> &arr1 , const myArray<T> &arr2){
-// 访问私有成员问题：arr1.size 和 arr1.length 无法直接访问
     // initial firstly
-    myArray<T> merge(arr1.size+arr2.size,arr1.length+arr2.length ); 
-    for(int i=0; i < arr1.length; i++)
+    myArray<T> merge(arr1.getSize() + arr2.getSize(),arr1.getLength()+arr2.getLength() ); 
+    // merge.p = (T*)malloc(sizeof(T) * merge.size);
+    for(int i=0; i < arr1.getLength(); i++)
     {
         merge.p[i] = arr1.p[i];
     }
-    for(int i = 0; i < merge.length; i++)
+    for(int i = 0; i < arr2.getLength(); i++)
     {
-        merge.p[i + arr1.length] = arr2.p[i];
+        merge.p[i + arr1.getLength()] = arr2.p[i];
     }
     return merge;
 
