@@ -30,6 +30,13 @@ class myArray{
     int getLength() const;
     void initialArray(int idx, T key);
     bool isSorted();
+    void Reverse(); // 数组顺序颠倒
+    void swap(int index_1, int index_2);
+    void reverseBySwap(int start, int end);
+    void leftShift(); // 将数组的元素向左移动n位，并且空出来的用default数值填充
+    void leftRotate(); //将数组的元素向左旋转，
+    void rightShift();
+    void rightRotate();
     void randomInit();
     static myArray<T> mergeArray(const myArray<T> &arr1 , const myArray<T> &arr2);
     
@@ -68,6 +75,41 @@ bool myArray<T>::isSorted(){
     return true;
 }
 
+
+template<class T>
+void myArray<T>::Reverse(){
+    // 方案1 ： 
+    myArray<T> temp(size,length);
+    for(int i=0; i<length;i++)
+    {
+        temp.p[i] = p[i];  
+    }
+    for(int i=0,j=length-1; j>=0; i++,j--)
+    {
+        p[i] = temp.p[j];
+    }
+}
+
+template<class T>
+void myArray<T>::swap(int index_1, int index_2){
+    int temp = p[index_1];
+    p[index_1] = p[index_2];
+    p[index_2] = temp;
+}
+
+
+
+template<class T>
+void myArray<T>::reverseBySwap(int start, int end){
+    // 方案2 ： 
+    if(start >= end)
+    {
+        return ;
+    }
+    myArray<T>::swap(start++,end--);
+    return myArray<T>::reverseBySwap(start,end);
+}
+
 template<class T>
 void myArray<T>::initialArray(int idx, T key){
     p[idx] = key;
@@ -85,8 +127,6 @@ void myArray<T>::randomInit(){
 
     }
 }
-
-
 
 template<class T>
 myArray<T> myArray<T>::mergeArray(const myArray<T> &arr1 , const myArray<T> &arr2){
