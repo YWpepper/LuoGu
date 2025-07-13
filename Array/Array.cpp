@@ -14,7 +14,7 @@ int main(){
     int inputLL = 5;
     srand(time(nullptr));
 
-    myArray<int> arr(inputSZ, inputLL);
+    ArrayClass<int> arr(inputSZ, inputLL);
     for(int i=0 ; i<inputLL ; i++)
     {
         int inputKey;
@@ -24,31 +24,57 @@ int main(){
     */
 
 
-
-    /*   
-    // function： 两个数组合并函数 
-    myArray<int> arr1(5,5);
+    /*   检验fucntion :  两个数组合并函数 mergeArray()
+    ArrayClass<int> arr1(5,5);
     arr1.randomInit();
     arr1.display();
 
-    myArray<int> arr2(5,5);
+    ArrayClass<int> arr2(5,5);
     arr2.randomInit();
     arr2.display();
 
     // 注意不要先建立一个arr3，然后让 arr3 = merge，因为merge会被释放；
-    myArray<int> arr3  = myArray<int>::mergeArray(arr1, arr2);
+    ArrayClass<int> arr3  = ArrayClass<int>::mergeArray(arr1, arr2);
     arr3.display();
     */
 
-    myArray<int> arr1(5,5);
+     ArrayClass<int> arr1(5,5);
     arr1.randomInit();
     arr1.display();
 
-    arr1.reverseBySwap(0,arr1.getLength()-1);
-    arr1.display();
+    ArrayClass<int> arr2(5,5);
+    arr2.randomInit();
+    arr2.display();
+
+    // 注意不要先建立一个arr3，然后让 arr3 = merge，因为merge会被释放；
+    ArrayClass<int> arr3  =  ArrayClass<int>::mergeArray(arr1, arr2);
+    arr3.display();
+
     
-    // arr1.swap(1,3);
-    // arr1.display();
+    /* 检验fucntion : BinarySearch(),insertArray()
+
+    ArrayClass<int> arr1(10,5);
+    arr1.randomInit();
+    cout << "randomInit as follow: " << endl;
+    arr1.display();
+
+
+    if(!arr1.isSorted()){
+        cout << "it's not sorted" << endl;
+        arr1.bubbleSort();
+        cout << "after sorted:" << endl;
+        arr1.display();
+    }
+
+    cout << "BinarySearch: " << endl;
+    int insertTarget = 20 ; 
+    int index = arr1.BinarySearch(0,arr1.getLength(),insertTarget);
+    cout << "we want to insert "<< insertTarget << ",the index is : "<< index << endl;
+    
+    cout <<  "insertArray: " <<endl ;
+    arr1.insertArray(index,insertTarget);
+    arr1.display();
+    */
 
 
 
