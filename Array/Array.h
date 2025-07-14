@@ -29,7 +29,11 @@ class ArrayClass{
     int getSize() const;
     int getLength() const;
     T   getElement(int idx) const;
-    void initialArray(int idx, T key); 
+    T   getMaxIndex();
+    T   getSmallIndex();
+    T   getMaxValue();
+    T   getSmallValue();
+    void setArray(int idx, T key); 
     void randomInit(); // 随机初始化单个数组；
     void swap(int index_1, int index_2);
     bool isSorted(); // 检查是否排序
@@ -73,9 +77,71 @@ T ArrayClass<T>::getElement(int idx) const{
         return p[idx];
 }
 
+template<class T>
+T   ArrayClass<T>::getMaxIndex(){
+    int MaxIndex=0;
+    int maxNum = p[0];
+    for(int i=0 ; i<length ; i++)
+    {
+        if( p[i] > maxNum )
+        {
+            maxNum = p[i];
+            MaxIndex = i ;
+        }
+    }
+    return MaxIndex;
+}
 
 template<class T>
-void ArrayClass<T>::initialArray(int idx, T key){
+T   ArrayClass<T>::getMaxValue(){
+    int MaxIndex=0;
+    int maxNum = p[0];
+    for(int i=0 ; i<length ; i++)
+    {
+        if( p[i] > maxNum )
+        {
+            maxNum = p[i];
+            MaxIndex = i ;
+        }
+    }
+    return maxNum;
+}
+
+
+template<class T>
+T   ArrayClass<T>::getSmallIndex(){
+    int samllIndex = 0;
+    int smallNum = p[0];
+    for(int i=1 ; i<length ; i++)
+    {
+        if( p[i] < smallNum )
+        {
+            smallNum = p[i];
+            samllIndex = i ;
+        }
+    }
+    return samllIndex;
+}
+
+template<class T>
+T   ArrayClass<T>::getSmallValue(){
+    int samllIndex = 0;
+    int smallNum = p[0];
+    for(int i=1 ; i<length ; i++)
+    {
+        if( p[i] < smallNum )
+        {
+            smallNum = p[i];
+            samllIndex = i ;
+        }
+    }
+    return smallNum;
+
+}
+
+
+template<class T>
+void ArrayClass<T>::setArray(int idx, T key){
     p[idx] = key;
 }
 
