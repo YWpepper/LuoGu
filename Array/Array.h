@@ -47,8 +47,6 @@ class ArrayClass{
 };
 
 
-
-
 template<class T>
 void ArrayClass<T>::display(){
     T *temPtr = p;
