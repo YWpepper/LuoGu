@@ -17,7 +17,7 @@ using namespace std;
  * */
 
 /* --- c style --- */
-template <class T>
+template <typename T>
 struct Node
 {
     T data;
@@ -28,9 +28,9 @@ template <class T>
 void createLinkedList(T *arr, int len)
 {
     struct Node<T> *temp, *last;
-    struct Node *first = (struct Node *)malloc(sizeof(struct Node));
+    Node<T> *first = new Node<T>();
     first->data = arr[0];
-    first->next = null;
+    first->next = nullptr;
     last = first;
     for (int i = 0; i < len; i++)
     {
@@ -38,7 +38,7 @@ void createLinkedList(T *arr, int len)
         temp->next = nullptr;
         last = temp;
         last->next = temp;
-        last = t;
+        last = temp;
     }
 }
 
