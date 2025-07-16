@@ -35,6 +35,7 @@ void display(struct Node *ptr)
         cout << ptr->data << " ";
         ptr = ptr->next;
     }
+    cout << endl;
 }
 
 void displayAddress(struct Node *ptr)
@@ -45,7 +46,7 @@ void displayAddress(struct Node *ptr)
         // idx += 1;
         // cout << " node: " << idx << " address: " << ptr << " data : " << ptr->data << endl;
         displayAddress(ptr->next);
-        cout << ptr->data << endl;
+        cout << ptr->data << " ";
     }
 }
 
@@ -82,37 +83,174 @@ int maxOfNodes(struct Node *ptr)
 
 struct Node *insertOfNode(struct Node *head, int idx, int data)
 {
+    // 先获取链表的长度，idx不能超过链表的长度；
+    int len = countNodes(head);
+
+    // 这是我们需要插入的目标对象
     struct Node *temp;
-    struct Node *p;
-    p = head;
-    temp = (struct Node *)malloc(sizeof(struct Node *));
+    temp = (struct Node *)malloc(sizeof(struct Node));
     temp->data = data;
-    int i = 0;
-    while (i != idx)
+    temp->next = nullptr;
+
+    // 如果本身该链表就是空链表
+    if (head == nullptr)
     {
-        p = p->next;
-        i++;
+        head = temp;
+        return head;
     }
-    temp->next = p->next;
-    p->next = temp;
-    free(temp);
+    // 头插
+    if (idx == 0)
+    {
+        temp->next = head;
+        head = temp;
+        return head;
+    }
+    else // 无论插在哪里，尾巴或者中间。
+    {
+        // 这是一个用来遍历链表的临时指针
+        struct Node *p;
+        p = head;
+        // 先用p指向目标idx的节点
+        for (int i = 0; i < idx - 1; i++)
+            p = p->next;
+        // 准备开始插入 开始给 temp->next 赋予指针空间
+        temp->next = p->next;
+        p->next = temp;
+    }
+
     return head;
+}
+
+// 因为我现在不知道我的插入位置需要通过找到按顺序插入的位置。
+struct Node *insertInSorted(struct Node *head, int key)
+{
+    struct Node *ptr;
+    ptr = head;
+    struct Node *target = (struct Node *)malloc(sizeof(struct Node));
+    target->data = key;
+    target->next = nullptr;
+    while (ptr != nullptr)
+    {
+        if (((ptr->next)->data) > key && ((ptr->data)) < key)
+        {
+            target->next = ptr->next;
+            ptr->next = target;
+            return head;
+        }
+        ptr = ptr->next;
+    }
 }
 
 struct Node *deleteOfNode(struct Node *head, int idx)
 {
     struct Node *ptr;
-    ptr = head; // 指向同一个空间；
+    ptr = head;   // 指向同一个空间；
+    if (idx == 0) // 头删除
+    {
+        ptr = head->next;
+        head = ptr;
+        return head;
+    }
+
     int i = 0;
-    while (i != idx)
+    while (i != idx - 1)
     {
         ptr = ptr->next;
         i++;
-    }
+    } // 先移动到指定位置
     struct Node *Tptr;
     Tptr = (struct Node *)malloc(sizeof(struct Node *));
-    Tptr = ptr->next;
-    ptr = Tptr->next;
-    free(Tptr);
+    Tptr = (ptr->next)->next;
+    ptr->next = Tptr;
+    return head;
+}
+
+struct Node *linearSearch(struct Node *head, int target)
+{
+    struct Node *ptr;
+    ptr = head; // 指向同一个空间；
+    struct Node *bptr = nullptr;
+    while (ptr != nullptr)
+    {
+        if (ptr->data == target) // 如果找到该目标，将该目标移到最前面
+        {
+            // 首先先保留ptr的next；
+            // 由于bptr是一个慢指针，所以还是指向target的前一个节点
+            cout << "bptr->data is " << bptr->data << endl;
+            bptr->next = ptr->next;
+            ptr->next = head;
+            head = ptr;
+            return head;
+        }
+        bptr = ptr;      // 放一个后指针指向它，得在它更新前赋值，不然他找到目标的时候都更想了
+        ptr = ptr->next; // ptr指针一直去遍历链表
+    }
+}
+
+struct Node *deleteDuplicated(struct Node *head)
+{
+    // 默认从小到大
+    struct Node *lptr;
+    struct Node *rptr = (struct Node *)malloc(sizeof(struct Node));
+    lptr = head;
+    rptr = head->next;
+    while (lptr && rptr)
+    {
+        if (lptr->data == rptr->data)
+        {
+            // 说明是重复的元素了
+            lptr->next = rptr->next;
+            rptr = rptr->next;
+            // continue; // 不执行后面了 或者用else
+        }
+        else
+        {
+            lptr = lptr->next;
+            rptr = rptr->next;
+        }
+    }
+    return head;
+}
+
+int swapLinkData(struct Node *ptr1, struct Node *ptr2)
+{
+    int temp = ptr1->data;
+    ptr1->data = ptr2->data;
+    ptr2->data = temp;
+    return 0;
+}
+
+// 用了一个临时数组来存储
+struct Node *reverseLink(struct Node *head)
+{
+    struct Node *ptr = head;
+    struct Node *last = head;
+    int tempArr[10] = {0};
+    for (int i = 0; i < (countNodes(ptr) - 1), ptr != nullptr; i++)
+    {
+        tempArr[i] = ptr->data;
+        ptr = ptr->next;
+    }
+    ptr = head;
+    int cnt = countNodes(ptr) - 1;
+    while (ptr != nullptr && cnt >= 0)
+    {
+        ptr->data = tempArr[cnt];
+        ptr = ptr->next;
+        cnt--;
+    }
+    return head;
+}
+
+// 冒泡排序交换法则
+struct Node *reverseLink2(struct Node *head)
+{
+    struct Node *ptr = head;
+
+    for (int i = 0; i <= (countNodes(ptr)) - 2; i++)
+    {
+        swapLinkData(ptr, ((ptr->next)->next)); // 这个很有意思
+        ptr = ptr->next;
+    }
     return head;
 }
