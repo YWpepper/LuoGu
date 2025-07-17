@@ -30,7 +30,7 @@ struct Node *create(struct Node *head, int arr[], int len)
 
 void display(struct Node *ptr)
 {
-    while (ptr != 0)
+    while (ptr != nullptr)
     {
         cout << ptr->data << " ";
         ptr = ptr->next;
@@ -139,6 +139,7 @@ struct Node *insertInSorted(struct Node *head, int key)
         }
         ptr = ptr->next;
     }
+    return head;
 }
 
 struct Node *deleteOfNode(struct Node *head, int idx)
@@ -185,6 +186,7 @@ struct Node *linearSearch(struct Node *head, int target)
         bptr = ptr;      // 放一个后指针指向它，得在它更新前赋值，不然他找到目标的时候都更想了
         ptr = ptr->next; // ptr指针一直去遍历链表
     }
+    return head;
 }
 
 struct Node *deleteDuplicated(struct Node *head)
@@ -221,7 +223,7 @@ int swapLinkData(struct Node *ptr1, struct Node *ptr2)
 }
 
 // 用了一个临时数组来存储
-struct Node *reverseLink(struct Node *head)
+struct Node *rotateByValue(struct Node *head)
 {
     struct Node *ptr = head;
     struct Node *last = head;
@@ -242,7 +244,7 @@ struct Node *reverseLink(struct Node *head)
     return head;
 }
 
-// 冒泡排序交换法则
+// 冒泡排序交换法则 -- 目前没有实现
 struct Node *reverseLink2(struct Node *head)
 {
     struct Node *ptr = head;
@@ -253,4 +255,114 @@ struct Node *reverseLink2(struct Node *head)
         ptr = ptr->next;
     }
     return head;
+}
+
+// rotateByPointer
+struct Node *rotateByPointer(struct Node *head, struct Node *lptr, struct Node *rptr)
+{
+    // 如果右指针为空，则将头指针指向右指针
+    if (rptr == nullptr)
+    {
+        head = lptr;
+        return head;
+    }
+    // 递归调用rotateByPointer函数，将头指针指向右指针的下一个节点
+    head = rotateByPointer(head, rptr, rptr->next);
+    // 将右指针的下一个节点指向左指针
+    rptr->next = lptr;
+    return head;
+}
+
+struct Node *concatLink(struct Node *link1, struct Node *link2, struct Node *link3)
+{
+    struct Node *link_1;
+    struct Node *link_2;
+    struct Node *link_3;
+    link_1 = link1;
+    link_2 = link2;
+    link_3 = link3;
+    int cnt = 0;
+    while (link_1 != nullptr && link_2 != nullptr)
+    {
+        struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
+        if (link_2->data > link_1->data)
+        {
+            temp->data = link_1->data;
+            link_1 = link_1->next;
+        }
+        else
+        {
+            temp->data = link_2->data;
+            link_2 = link_2->next;
+        }
+        if (cnt == 0)
+        {
+            cout << "initial the link " << endl;
+            cnt = 1;
+            link3 = temp;
+            link_3 = link3;
+            cout << "link3 head is " << link3->data << endl;
+        }
+        else
+        {
+            link_3->next = temp;
+            link_3 = link_3->next;
+        }
+    }
+
+    return link3;
+}
+
+struct Node *setloop(struct Node *head, int target)
+{
+    // target代表回指的节点数值
+    struct Node *last, *p;
+    p = last = head;
+    while (last->next != nullptr)
+    {
+        last = last->next; // 移动到最后
+    }
+    while (p->data != target)
+    {
+        p = p->next;
+    }
+    last->next = p;
+    return head;
+}
+
+void displayLoop(struct Node *head)
+{
+    // 1. 处理空链表
+    if (head == nullptr)
+    {
+        cout << "链表为空！" << endl;
+    }
+    struct Node *ptr = head;
+    int printCount = 0;
+    const int MAX_PRINT = 20;
+    // 2. 循环打印，限制最大次数
+    while (ptr != nullptr && printCount < MAX_PRINT)
+    {
+        cout << ptr->data << " ";
+        ptr = ptr->next;
+        printCount++;
+    }
+}
+
+bool isCycle(struct Node *head)
+{
+    struct Node *fast;
+    struct Node *slow;
+    slow = fast = head;
+    while (fast != nullptr)
+    {
+        fast = (fast->next)->next;
+        slow = slow->next;
+        if (fast == slow)
+        {
+            cout << "exiting loop" << endl;
+            return true;
+        }
+    }
+    return false;
 }
