@@ -1,6 +1,7 @@
 #include<iostream>
 #include<cstdlib>
 #include<string>
+#include<cstring>
 using namespace std;
 
 /*
@@ -190,29 +191,47 @@ public:
         if (isEmpty())
         {
             s = top = newNode;
+            cout << "push " << newNode->data << endl;
             return;
         }
         
         // 正常含有数值的情况的话
+        cout << "push " << newNode->data << endl;
         newNode->next = top;
         top =  newNode;
     }
 
+
     void display(){
-        if(top==nullptr)
+
+        Node<T>* ptr = top ; 
+        if(ptr==nullptr)
         {
              cout << "without element" << endl;
              return ;
         }
         
-        while(top!=nullptr)
+        while(ptr!=nullptr)
         {
-            cout << top->data << " ";
-            top = top->next;
+            cout << ptr->data << " ";
+            ptr = ptr->next;
         }
         cout << endl;
         return ;
     }
+
+    T pop(){
+
+        Node<T>* ptr = top ; 
+        if (ptr == nullptr)
+            return NULL;
+        Node<T>* toDelete = ptr;
+        T DeleteData = toDelete->data;
+        cout << "POP: " << toDelete->data << endl;
+        top = top->next;
+        delete toDelete;
+        return DeleteData;
+        }
 
 
 
