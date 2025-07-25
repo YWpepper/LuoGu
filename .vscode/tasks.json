@@ -22,7 +22,15 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "调试器生成的任务。"
+            "detail": "调试器生成的任务。",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",  // 所有任务共享一个终端面板
+                "showReuseMessage": true,
+                "clear": false
+            }
         }
     ],
     "version": "2.0.0"
