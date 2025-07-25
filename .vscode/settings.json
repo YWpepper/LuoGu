@@ -59,6 +59,8 @@
   "files.associations": {
     "*.dbclient-js": "javascript",
     "*.cpp": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "queue": "cpp",
+    "deque": "cpp"
   }
 }

@@ -1,0 +1,68 @@
+{
+  "[python]": {
+    "diffEditor.ignoreTrimWhitespace": false
+  },
+  "database-client.autoSync": true,
+  "Codegeex.License": "",
+  "Codegeex.Privacy": true,
+  "workbench.colorTheme": "Visual Studio Light",
+  "git.autofetch": true,
+  "workbench.editor.empty.hint": "hidden",
+  "editor.dropIntoEditor.preferences": [],
+  "remote.SSH.remotePlatform": {
+    "mylap": "linux",
+    "59.72.88.158": "linux",
+    "59.72.88.129": "linux",
+    "1660-root-59.72.88.158": "linux",
+    "4090-tiger-out-59.72.88.129": "linux",
+    "connect.westc.gpuhub.com": "linux",
+    "4gpu4090": "linux",
+    "connect.westb.seetacloud.com": "linux",
+    "connect.bjb1.seetacloud.com": "linux",
+    "wetst337": "linux",
+    "wetst369": "linux",
+    "beijing305": "linux",
+    "12-6connect.bjb1.seetacloud.com": "linux",
+    "8-10-6connect.bjb1.seetacloud.com": "linux",
+    "connect.yza1.seetacloud.com": "linux",
+    "connect.nmb1.seetacloud.com": "linux",
+    "4090/222/6": "linux",
+    "786机connect.neimeng.seetacloud.com": "linux",
+    "connect.nmb2.seetacloud.com": "linux",
+    "connect.gda1.seetacloud.com": "linux",
+    "region-31.seetacloud.com": "linux",
+    "connect.neimeng.seetacloud.com": "linux",
+    "4090-root-out-59.72.88.129": "linux"
+  },
+  "files.exclude": {
+    "**/__MAC*": true,
+    "**/.*": true,
+    "**/.git*": true,
+    "**/.vscode**": true,
+    "**/=*": true,
+    "**/LICENSE": true
+  },
+  "security.allowedUNCHosts": ["wsl.localhost"],
+  "http.proxyAuthorization": null,
+  "http.proxyStrictSSL": false,
+  "http.electronFetch": true,
+  "http.noProxy": ["http://127.0.0.1:33210"],
+  "Codegeex.DisabledFor": {
+    "cpp": true
+  },
+  "Codegeex.EnableExtension": false,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "terminal.integrated.cwd": "${fileDirname}",
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "remote.autoForwardPortsSource": "hybrid",
+  "C_Cpp.formatting": "clangFormat",
+  "editor.formatOnSave": true,
+  "clang-format.executable": "/usr/bin/clang-format",
+  "clang-format.executable.linux": "/usr/bin/clang-format",
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
