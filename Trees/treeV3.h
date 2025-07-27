@@ -1,5 +1,5 @@
 #include <iostream>
-#include <queue>
+#include "../Queue/QueueClass.h"
 using namespace std;
 
 class Tree
