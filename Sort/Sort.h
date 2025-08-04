@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <stack>
+#include <vector>
 
 using namespace std;
 
@@ -12,6 +13,15 @@ void swap(int &x, int &y)
 }
 
 void display(int arr[], int len)
+{
+    for (int i = 0; i < len; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+void display2(vector<int> arr, int len)
 {
     for (int i = 0; i < len; i++)
     {
@@ -126,4 +136,55 @@ void shellSort(int arr[], int len)
     display(arr, len);
     cout << "when slide is 1: " << endl;
     insertSort(arr, len);
+}
+
+int partition(vector<int> &arr, int l_idx, int r_idx)
+{
+    int pivot = arr[l_idx];
+    int r=l_idx+1, l=l_idx+1;
+    while(r < r_idx)
+    {
+        // 这里是双指针的条件划分设置的地方
+        if(arr[r] <= pivot)
+        {
+            swap(arr[r], arr[l]);
+            l++;
+        }
+        r++;
+    }
+    cout << "l index is " << l << endl;
+    swap(arr[l-1],arr[l_idx]);
+    return l; // 即返回当前处理完的index
+}
+
+
+
+int partition2(vector<int> &arr, int l_idx, int r_idx)
+{
+    int pivot = arr[l_idx];
+    int l=l_idx,r = r_idx;
+    do {
+        // 从左边开始找，直到找到大于 标准
+        do {
+            l++;
+        }
+        while(arr[l] <= pivot);
+        // 从右边开始找，直到找到小于 标准
+        do {
+            r--;
+        } while(arr[r] > pivot);
+        // 交换位置
+        swap(arr[l],arr[r]);
+    } while(l<r);
+    cout << "l is " << l << " R is " << r << endl;
+    // 最后一步是
+    // swap(pivot,arr[l--]);
+
+}
+
+
+
+void quickSort()
+{
+
 }
