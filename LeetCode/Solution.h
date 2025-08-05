@@ -45,7 +45,58 @@ public:
             }
         }
     }
+    int getMin(int a, int b)
+    {
+        return a>b ? b:a;
+    }
+
+
+    int maxArea(vector<int>& height);
 };
+
+
+
+// // 这个超时了
+// int Solution::maxArea(vector<int>& height) {
+//     int res = 0;
+//     int len = height.size();
+//     int iPtr=0, jPtr=len-1;
+//     for(int i = iPtr; i<jPtr; i++)
+//     {
+//         for( int j= jPtr; j>i; j--)
+//         {
+//             int gap = j-i;
+//             int max = getMin(height[i], height[j]) * gap ;
+//             if(max > res) res = max;
+//         }
+
+//     }
+//     cout << res  << endl;
+//     return res;
+// }
+
+
+// 盛最多水的容器 , 这里面有数学问题；
+int Solution::maxArea(vector<int>& height) {
+
+    int res = 0;
+    int rp = 0, lp=height.size()-1;
+
+    while(rp < lp)
+    {
+        int curS = getMin(height[rp], height[lp]) * (lp-rp) ;
+        if(curS > res )
+        {
+            res = curS;
+        }
+        if(height[rp]< height[lp] ) rp++;
+        else lp--;
+    }
+    cout << res  << endl;
+    return res;
+}
+
+
 
 
 
@@ -67,4 +118,5 @@ public:
         }
         // [L,R]区域的数字，其实是不满足if（xx） 后面条件的变量
     }
+
 };
