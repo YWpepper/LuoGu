@@ -10,7 +10,9 @@ int main() {
     // cout << "result:" << endl;
     // display(nums);
     Solution solu;
-    vector<int> nums =  {1,8,6,2,5,4,8,3,7};
-    solu.maxArea(nums);
-
+    // vector<int> nums =  {1,8,6,2,5,4,8,3,7};
+    // vector<int> nums =  {2,7,11,15};
+    vector<int> nums =  {3,3};
+    // solu.maxArea(nums);
+    solu.twoSum(nums,6);
 }

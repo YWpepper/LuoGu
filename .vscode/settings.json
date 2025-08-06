@@ -62,5 +62,6 @@
     "iostream": "cpp",
     "queue": "cpp",
     "deque": "cpp"
-  }
+  },
+  "editor.formatOnSave": true
 }

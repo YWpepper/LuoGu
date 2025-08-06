@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/root/tiger/ByFunction/c++/uploadInGithub/DataStructuresAlgorithms/Link",
-      "program": "/root/tiger/ByFunction/c++/uploadInGithub/DataStructuresAlgorithms/Link/build/Debug/outDebug",
+      "cwd": "/root/tiger/ByFunction/c++/uploadInGithub/DataStructuresAlgorithms/LeetCode",
+      "program": "/root/tiger/ByFunction/c++/uploadInGithub/DataStructuresAlgorithms/LeetCode/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
