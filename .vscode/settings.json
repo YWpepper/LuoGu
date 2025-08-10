@@ -61,7 +61,10 @@
     "*.cpp": "cpp",
     "iostream": "cpp",
     "queue": "cpp",
-    "deque": "cpp"
+    "deque": "cpp",
+    "cstdlib": "cpp",
+    "vector": "cpp",
+    "stack": "cpp"
   },
   "editor.formatOnSave": true
 }

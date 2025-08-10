@@ -8,20 +8,24 @@
 
 using namespace std;
 
-void display(const vector<int> &nums) {
-  for (int i = 0; i < nums.size(); i++) {
+void display(const vector<int> &nums)
+{
+  for (int i = 0; i < nums.size(); i++)
+  {
     cout << nums[i] << " ";
   }
   cout << endl;
 }
 
-void swap(int &num1, int &num2) {
+void swap(int &num1, int &num2)
+{
   int temp = num1;
   num1 = num2;
   num2 = temp;
 }
 
-class Solution {
+class Solution
+{
 
 public:
   virtual void moveZeroes(vector<int> &nums); // 将0放在最后
@@ -30,7 +34,7 @@ public:
 
   int maxArea(vector<int> &height); //  盛最多水的容器
 
-  vector<int>  twoSum(vector<int> &nums, int target); //  两数之和
+  // vector<int> twoSum(vector<int> &nums, int target); //  两数之和
 };
 
 // vector<int> Solution::twoSum(vector<int> &nums, int target) {
@@ -40,7 +44,7 @@ public:
 //   int len = nums.size();
 //   int hash[MAXSIZE] = {-1}; // 用哈希表存储数值的index，而不是单一出现次数
 //   memset(hash, -1, MAXSIZE); // 避免与0有关系
-  
+
 //   int a = target;
 //   for(int i=0 ; i<len ; i++)
 //   {
@@ -57,35 +61,37 @@ public:
 
 // }
 
+// vector<int> Solution::twoSum(vector<int> &nums, int target)
+// {
 
-
-vector<int> Solution::twoSum(vector<int> &nums, int target) {
-
-  unordered_map<int,int> hash;
-  for( int i=0 ; i<nums.size() ; i++)
-  {
-    auto it = hash.find(target - nums[i]);
-    if( it !=hash.end()) // 如果都遍历到最后了，就说明不存在
-    {
-      cout  << it->second << " " << i << endl;
-      return {it->second,i};
-    }
-    hash[nums[i]] = i;
-  }
-}
-
+//   unordered_map<int, int> hash;
+//   for (int i = 0; i < nums.size(); i++)
+//   {
+//     auto it = hash.find(target - nums[i]);
+//     if (it != hash.end()) // 如果都遍历到最后了，就说明不存在
+//     {
+//       cout << it->second << " " << i << endl;
+//       return {it->second, i};
+//     }
+//     hash[nums[i]] = i;
+//   }
+// }
 
 // 返回两个数之间的最小值
 int Solution::getMin(int a, int b) { return a > b ? b : a; }
 
-void Solution::moveZeroes(vector<int> &nums) {
+void Solution::moveZeroes(vector<int> &nums)
+{
   int len = nums.size();
   cout << len << endl;
   int cnt = 0;
-  for (int i = 0; i < len - cnt; i++) {
+  for (size_t i = 0; i < len - cnt; i++)
+  {
     // 左移；
-    if (nums[i] == 0 && (len - cnt) > 1) {
-      for (int j = i; j < len - cnt; j++) {
+    if (nums[i] == 0 && (len - cnt) > 1)
+    {
+      for (int j = i; j < len - cnt; j++)
+      {
         nums[j] = nums[j + 1];
       }
       nums[len - cnt] = 0;
@@ -114,14 +120,17 @@ void Solution::moveZeroes(vector<int> &nums) {
 // }
 
 // 盛最多水的容器 , 这里面有数学问题；
-int Solution::maxArea(vector<int> &height) {
+int Solution::maxArea(vector<int> &height)
+{
 
   int res = 0;
   int rp = 0, lp = height.size() - 1;
 
-  while (rp < lp) {
+  while (rp < lp)
+  {
     int curS = getMin(height[rp], height[lp]) * (lp - rp);
-    if (curS > res) {
+    if (curS > res)
+    {
       res = curS;
     }
     if (height[rp] < height[lp])
@@ -132,3 +141,6 @@ int Solution::maxArea(vector<int> &height) {
   cout << res << endl;
   return res;
 }
+
+
+
