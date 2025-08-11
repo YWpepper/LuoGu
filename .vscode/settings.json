@@ -64,7 +64,8 @@
     "deque": "cpp",
     "cstdlib": "cpp",
     "vector": "cpp",
-    "stack": "cpp"
+    "stack": "cpp",
+    "unordered_set": "cpp"
   },
   "editor.formatOnSave": true
 }
