@@ -1,0 +1,31 @@
+{
+    "Codegeex.Privacy": true,
+    "debug.inlineValues": "on",
+    "Codegeex.License": "",
+    "terminal.integrated.inheritEnv": false,
+    "files.exclude": {
+        "**/.*": true,
+        "**/*.cfg*": true,
+        "**/*.in*": true,
+        "**/*.o": true,
+        "**/*.toml": true,
+        "**/LICENSE": true
+    },
+    "database-client.autoSync": true,
+    "workbench.settings.applyToAllProfiles": [],
+    "workbench.colorTheme": "Visual Studio Light",
+    "hediet.vscode-drawio.resizeImages": null,
+    "workbench.editorAssociations": {
+        "*.sh": "default",
+        "*.pdf": "pdf.preview"
+    },
+    "Codegeex.EnableExtension": false,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "git.autofetch": true,
+    "diffEditor.hideUnchangedRegions.enabled": true
+}
