@@ -81,10 +81,10 @@ void HeapifyArray(int* arr, int len) {
 
 
 int main() {
-    // int arr[] = {123,12,31,85,35,1512,3,99};
+    int arr[] = {123,12,31,85,35,1512,3,99};
     // int arr[] = {100, 90, 80, 70, 60, 50, 40, 30};
     // int arr[] = {1, 2, 3, 4, 5, 6, 7, 8};
-    int arr[] = {5, 3, 5, 2, 5, 1, 5};
+    // int arr[] = {5, 3, 5, 2, 5, 1, 5};
 
 
     int len = sizeof(arr) / sizeof(arr[0]);
